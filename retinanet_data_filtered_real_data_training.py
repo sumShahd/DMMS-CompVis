@@ -188,13 +188,8 @@ def get_model_Object_Detection(num_classes=91):  # 1 classes + background
     )
     return model
 
-"""pull from simplified training models"""
 
-os.system("wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/engine.py")
-os.system("wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/utils.py")
-os.system("wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/coco_utils.py")
-os.system("wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/coco_eval.py")
-os.system("wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/transforms.py")
+
 
 """Transform Data"""
 
@@ -219,7 +214,7 @@ import torch
 
 
 def move_to_device_if_tensor(obj, device):
-    """Recursively moves tensors within nested structures to the specified device.
+    
 
     Args:
         obj: The object to move to the device (could be nested).
