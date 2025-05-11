@@ -54,3 +54,6 @@ def get_transform(train=True):
         transforms.append(T.ColorJitter(brightness=0.1, contrast=0.1, saturation=0.1, hue=0.1))
     transforms.extend([T.ToDtype(torch.float, scale=True), T.ToPureTensor()])
     return T.Compose(transforms)
+
+def collate_fn(batch):
+    return tuple(zip(*batch))
