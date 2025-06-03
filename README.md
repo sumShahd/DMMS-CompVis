@@ -61,7 +61,7 @@ We initially selected RetinaNet with a ResNet50 backbone as the primary model af
 #### Codebase Explanation:
 - `dataset.py` defines the dataset structure and links to the processed imagery folder within the Azure storage container. Uses the coco annotation url to extract imagery metadata before setting targets for bounding boxes, labels and other key parameters
 - `model.py` defines the function `get_model` function which creates and returns the model architecture chosen
-- `train.py` completes the tranining loop based on input training parameter arguments and logs metrics using MetricLogger and MLFlow. Example:
+- `train.py` completes the tranining loop based on input training parameter arguments and logs metrics using **torchtnt.utils.loggers.MetricLogger** and MLFlow. Example:
 ```
 epochs: 100
 batch_size: 4
@@ -80,7 +80,7 @@ Below are the steps taken to modify and train the model:
 3. Authenticate and activate workspace by running the first cell of `Training Script.ipynb`
 4. Generate the job command using the second cell of `Training Script.ipynb`. In this cell, modify the name of the model architecture used (RetinaNet or FasterRCNN), the number of classes if using binary classification, the training parameters and link the job correclty to the running compute started in step 1.
 5. Run the job in the next cell of `Training Script.ipynb` using `ml_client.create_or_update(job)`.
-6. As the training uses MetricLogger to track model learning metrics - the visualisations can be seen when viewing the running job in Azure under the 'Metrics' tab. F1, Precision, Recall, Loss and Learning Rate are tracked as the model is trained.
+6. As the training uses **torchtnt.utils.loggers.MetricLogger** and MLFlow to track model learning metrics - the visualisations can be seen when viewing the running job in Azure under the 'Metrics' tab. F1, Precision, Recall, Loss and Learning Rate are tracked as the model is trained.
 
 ## Future Work
 Suggested next steps for improving upon the project include:
