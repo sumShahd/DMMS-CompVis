@@ -40,11 +40,11 @@ Drone imagery were provided by StevTech as 512x512 image tiles of all farm image
 ## Model Overview
 We initially selected RetinaNet with a ResNet50 backbone as the primary model after a literature survey due to it offering a balance of accuracy, speed, and potential for class weight modification of the loss function. We also trained a model with the FasterRCNN architecture with binary classification (one weed class combing all and a background class combining the obstacle classes) which acted as an initial classifier for the drone image tiles (most of which did not contain any weeds). Additional model training details:
 
-**Framework:** PyTorch
-**Machine Learning Platform:** Azure ML 
-**Training method:** Fine-tuned on COCO pre-trained weights
-**Target metrics:** ≥90% accuracy (F1-score) with 10 FPS inference
-**Compute Specifications:** 
+**Framework:** PyTorch\
+**Machine Learning Platform:** Azure ML\
+**Training method:** Fine-tuned on COCO pre-trained weights\
+**Target metrics:** ≥90% accuracy (F1-score) with 10 FPS inference\
+**Compute Specifications:**
 - GPU: 1 x NVIDIA Tesla T4
 - Virtual machine size: Standard_NC4as_T4_v3 (4 cores, 28 GB RAM, 176 GB disk)
 
@@ -53,16 +53,15 @@ We initially selected RetinaNet with a ResNet50 backbone as the primary model af
 ### Prerequisites
 - Python >= 3.8
 - PyTorch >= 2.0
-- Encord SDK (optional for annotation export)
-- Azure ML SDK (for cloud experiments)
+- Encord SDK (annotation export)
+- Azure ML SDK (for cloud training)
 
 ### Azure ML Pipeline
-The project has been successfully deployed for experimentation on Azure ML. 
 
 #### Codebase Explanation:
-- 'dataset.py' defines the dataset structure and links to the processed imagery folder within the Azure storage container. Uses the coco annotation url to extract imagery metadata before setting targets for bounding boxes, labels and other key parameters
-- 'model.py' defines the function 'get_model' function which creates and returns the model architecture chosen
-- 'train.py' completes the tranining loop based on input training parameter arguments and logs metrics using MetricLogger and MLFlow. Example:
+- `dataset.py` defines the dataset structure and links to the processed imagery folder within the Azure storage container. Uses the coco annotation url to extract imagery metadata before setting targets for bounding boxes, labels and other key parameters
+- `model.py` defines the function `get_model` function which creates and returns the model architecture chosen
+- `train.py` completes the tranining loop based on input training parameter arguments and logs metrics using MetricLogger and MLFlow. Example:
 ```
 epochs: 100
 batch_size: 4
@@ -71,16 +70,16 @@ weight_decay: 5e-05
 step_size: 5
 gamma: 0.6
 ```
-- 'Training Script.ipynb' authenticates & obtains the Azure ML workspace and submits the training job using 'train.py'.
+- `Training Script.ipynb` authenticates & obtains the Azure ML workspace and submits the training job using `train.py`.
 - Other code files there are helper functions mostly obtained from Pytorch libraries as there were some difficulties in importing the dependencies.
 
 #### Usage:
 Below are the steps taken to modify and train the model:
 1. Start compute within Azure ML workspace
-2. In 'dataset.py' from line 90, class labels can be modified to binary classification by enabling the binary class mapping code from line 95. Otherwise the default is to utilise the 5 classes in the data ontology (+ the background class = 6)
-3. Authenticate and activate workspace by running the first cell of 'Training Script.ipynb'
-4. Generate the job command using the second cell of 'Training Script.ipynb'. In this cell, modify the name of the model architecture used (RetinaNet or FasterRCNN), the number of classes if using binary classification, the training parameters and link the job correclty to the running compute started in step 1.
-5. Run the job in the next cell of 'Training Script.ipynb' using 'ml_client.create_or_update(job)'.
+2. In `dataset.py` from line 90, class labels can be modified to binary classification by enabling the binary class mapping code from line 95. Otherwise the default is to utilise the 5 classes in the data ontology (+ the background class = 6)
+3. Authenticate and activate workspace by running the first cell of `Training Script.ipynb`
+4. Generate the job command using the second cell of `Training Script.ipynb`. In this cell, modify the name of the model architecture used (RetinaNet or FasterRCNN), the number of classes if using binary classification, the training parameters and link the job correclty to the running compute started in step 1.
+5. Run the job in the next cell of `Training Script.ipynb` using `ml_client.create_or_update(job)`.
 6. As the training uses MetricLogger to track model learning metrics - the visualisations can be seen when viewing the running job in Azure under the 'Metrics' tab. F1, Precision, Recall, Loss and Learning Rate are tracked as the model is trained.
 
 ## Future Work
