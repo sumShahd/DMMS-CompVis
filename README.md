@@ -33,8 +33,8 @@ The dataset uses a custom object detection-based ontology rather than image-leve
 
 ### Dataset
 Drone imagery were provided by StevTech as 512x512 image tiles of all farm imagery obtained. Annotation and dataset creation were conducted using Encord and annotations followed a JSON-based COCO format. The dataset was split as follows:
-- Train: 90%
-- Validation: 10%
+- Train: 80%
+- Validation: 20%
 - Test: Unseen drone imagery
 
 ## Model Overview
@@ -94,8 +94,8 @@ Suggested next steps for improving upon the project include:
 - Jacob Ryan
 - Sanka Kotinkaduwa
 
-## Acknowledgements
-We would like to extend our greatest appreciation to our DMMS mentors David Chambers and Katia Bourahmoune throughout this project - their guidance and knowledge were invaluable. We are also extremely grateful to StevTech for their consistent support and encouragement as we worked on this project. A special thanks to Tuyen Ngyuen - our primary StevTech contact and lead for the computer vision project.
+## Acknowledgementst
+We would like to extend our greatest appreciation to our DMMS mentors David Chambers and Katia Bourahmoune throughout this project - their guidance and knowledge were invaluable. We are also extremely grateful to StevTech for their consistent support and encouragement as we worked on this project. A special thanks to Tuyen Ngyuen - our primary StevTech contact and lead for the computer vision project. His support and management of the team ensured that we were able to learn and contribute to the project meaningfully.
 
 
  
