@@ -102,7 +102,7 @@ Suggested next steps for improving upon the project include:
 - Jacob Ryan
 - Sanka Kotinkaduwa
 
-## Acknowledgementst
+## Acknowledgements
 We would like to extend our greatest appreciation to our DMMS mentors David Chambers and Katia Bourahmoune throughout this project - their guidance and knowledge were invaluable. We are also extremely grateful to StevTech for their consistent support and encouragement as we worked on this project. A special thanks to Tuyen Ngyuen - our primary StevTech contact and lead for the computer vision project. His support and management of the team ensured that we were able to learn and contribute to the project meaningfully.
 
 
