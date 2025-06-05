@@ -82,9 +82,17 @@ Below are the steps taken to modify and train the model:
 5. Run the job in the next cell of `Training Script.ipynb` using `ml_client.create_or_update(job)`.
 6. As the training uses **torchtnt.utils.loggers.MetricLogger** and MLFlow to track model learning metrics - the visualisations can be seen when viewing the running job in Azure under the 'Metrics' tab. F1, Precision, Recall, Loss and Learning Rate are tracked as the model is trained.
 
-## Future Work
+## Recommendations and Potential for Future Work
 Suggested next steps for improving upon the project include:
-- Further dataset expansion for generalisation.
+- Continue using the binary classification model in the annotation workflow to efficiently filter out non-weed imagery.
+- Address class imbalance by applying advanced data augmentation techniques:
+  - Use Albumentations for automated, diverse image transformations.
+  - Apply copy-pasting of rare classes (e.g., obstacles) into other image tiles.
+  - Explore GANs to synthetically generate underrepresented object examples.
+- Use Encord’s Annotator Training Projects to improve annotation accuracy and train new annotators against expert-labelled benchmarks.
+- Utlise Sweep jobs in Azure ML to automate hyperparameter tuning and enhance model performance.
+- Trial alternative object detection models to compare and optimise detection results.
+- Modularise the training codebase to support future extensions and easy collaboration.
 - Model export for edge device inference and integration with StevTech's drone dock and drone hub.
 - Initial trial deployment on test farms with StevTech.
 
